@@ -1,7 +1,9 @@
 var f = d3.select("div#field")
+var width = 500
+var height = 500
 var svg = f.append("svg")
-           .attr("width", 500)
-           .attr("height", 500)
+           .attr("width", width)
+           .attr("height", height)
 var v = [
 	new Point(200,  50),
 	new Point(100, 300),
@@ -43,6 +45,7 @@ svg.selectAll("path.bisector")
 	  .classed("bisector", true)
 	  .attr("d", lsb)
 	  .attr("stroke", "black")
+	  .attr("stroke-dasharray", "2")
 svg.selectAll("circle")
 	.data(v).enter()
 	.append("circle")
@@ -76,16 +79,15 @@ function lsb(d){
 	let segm = d.segment
 	let mpX = (segm.start.x + segm.end.x) / 2
 	let mpY = (segm.start.y + segm.end.y) / 2
-	let norX = segm.end.y - segm.start.y
-	let norY = segm.start.x - segm.end.x
-	let norLength2 = norX*norX + norY*norY
-	let l = 500*Math.sqrt(2)/Math.sqrt(norLength2) // lengthen over the field
+	let normX = segm.end.y - segm.start.y
+	let normY = segm.start.x - segm.end.x
+	let normLength = Math.sqrt(normX*normX + normY*normY)
+	let l = Math.sqrt(width*width+height*height)/normLength // lengthen over the field
 	return line(
-		{x: mpX+l*norX, y: mpY+l*norY},
-		{x: mpX-l*norX, y: mpY-l*norY}
+		{x: mpX+l*normX, y: mpY+l*normY},
+		{x: mpX-l*normX, y: mpY-l*normY}
 	)
 }
 function line(a, b){
-	console.log(a)
 	return d3.line()([[a.x, a.y],[b.x, b.y]])
 }

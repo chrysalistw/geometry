@@ -4,8 +4,16 @@
 		<title>playable triangle</title>
 	</head>
 	<body>
+	<script type="module" src="geometry.js"></script>
+	<script type="module">
+		import {Point} from "./geometry.js"
+		var p = new Point(200,50)
+		console.log(p)
+	</script>
 		<div id="field"></div>
+		<!--
 		<script src="d3.js"></script>
 		<script src="main.js"></script>
+		-->
 	</body>
 </html>
