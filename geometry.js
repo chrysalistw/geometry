@@ -3,20 +3,29 @@ export default geometry
 export { Point, LineSegment, Bisector }
 
 //set svg field
-//store all geomObj in an array
 
 var geometry = {}
-function GeomObj(){
-	this.visible = true
+class GeomObj {
+	constructor(visible){
+		this.visible = true
+	}
 }
-function Point(x, y){
-	//inherit GeomObj
-	this.x = x
-	this.y = y
+class Point extends GeomObj{
+	constructor(x, y){
+		super()
+		this.x = x
+		this.y = y
+	}
 }
-function LineSegment(p1, p2){
-	this.vertex = [p1, p2]
+class LineSegment extends GeomObj{
+	constructor(p1, p2){
+		super()
+		this.vertex = [p1, p2]
+	}
 }
-function Bisector(ls){
-	this.parent = ls
+class Bisector extends GeomObj{
+	constructor(ls){
+		super()
+		this.parent = ls
+	}
 }
