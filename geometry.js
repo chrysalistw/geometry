@@ -1,13 +1,29 @@
 import "./d3.js"
-export default geometry
 export { Point, LineSegment, Bisector }
+var geometry = {objs: []}
+export default geometry
 
-//set svg field
-
-var geometry = {}
+geometry.setField = function(div, w, h){
+	geometry.field = d3.select(div).append("svg")
+	                   .attr("width",w)
+	                   .attr("height",h)
+}
+geometry.update = function(){
+	geometry.field.selectAll("circle")
+		.data(geometry.objs.filter(
+			o=>o.__proto__.constructor.name==="Point"
+		)).enter()
+		.append("circle")
+		  .attr("r", 5)
+		  .attr("cx", d=>d.x)
+		  .attr("cy", d=>d.y)
+		  .attr("fill", "yellow")
+		  .attr("stroke", "black")
+}
 class GeomObj {
 	constructor(visible){
 		this.visible = true
+		geometry.objs.push(this)
 	}
 }
 class Point extends GeomObj{
