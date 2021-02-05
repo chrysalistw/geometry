@@ -7,10 +7,10 @@
 	<script type="module">
 		import geometry from "./geometry.js"
 		import {Point} from "./geometry.js"
+		geometry.setField(document.getElementById("field"),500,500)
 		var p = new Point(200,50)
 		console.log(p)
-		geometry.setField(document.getElementById("field"),500,500)
-		geometry.update()
+	//	geometry.update()
 
 	</script>
 		<div id="field"></div>

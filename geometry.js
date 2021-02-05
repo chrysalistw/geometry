@@ -31,6 +31,34 @@ class Point extends GeomObj{
 		super()
 		this.x = x
 		this.y = y
+		this.show = function(){
+			geometry.field.selectAll("circle")
+			        .data([this]).enter()
+				.append("circle")
+				  .attr("r", 5)
+				  .attr("cx", d=>d.x)
+				  .attr("cy", d=>d.y)
+				.attr("fill", "yellow")
+				.attr("stroke", "black")
+				.call(
+					d3.drag()
+					  .on("drag", function(e){
+						e.subject.update(
+							this,
+							e.subject.x+e.dx,
+							e.subject.y+e.dy
+						)
+					  })
+				)
+		}
+		this.show()
+		this.update = function(element, x, y){
+			this.x = x
+			this.y = y
+			d3.select(element)
+			  .attr("cx", x)
+			  .attr("cy", y)
+		}
 	}
 }
 class LineSegment extends GeomObj{
