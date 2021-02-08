@@ -6,18 +6,17 @@
 	<body>
 	<script type="module">
 		import geometry from "./geometry.js"
-		import {Point,LineSegment} from "./geometry.js"
+		import {Point,LineSegment,Bisector} from "./geometry.js"
 		geometry.setField(document.getElementById("field"),500,500)
-		var p = new Point(200,50)
-		var a = new Point(100, 300)
-		var b = new Point(300, 350)
-		console.log(p, a, b)
-		var lineSegments = [
-			new LineSegment(p, a),
-			new LineSegment(a, b),
-			new LineSegment(b, p)
-		]
-	//	geometry.update()
+		var A = new Point(200,50)
+		var B = new Point(100, 300)
+		var C = new Point(300, 350)
+		var b = new LineSegment(C, A)
+		var c = new LineSegment(A, B)
+		var a = new LineSegment(B, C)
+		new Bisector(a)
+		new Bisector(b)
+		new Bisector(c)
 
 	</script>
 		<div id="field"></div>
