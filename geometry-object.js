@@ -9,4 +9,9 @@ class GeomObj {
 		this.visible = true
 		objs.push(this)
 	}
+	attachToLS(ls){ // attach to a line segment
+		console.log(this.x, this.y)
+		//project this to line segment
+		this.update(125, this.y)	
+	}
 }
