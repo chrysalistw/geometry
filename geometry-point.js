@@ -65,3 +65,21 @@ Point.prototype.attachToLS = function(ls){ // attach to a line segment
 		})
 	}
 }
+Point.prototype.attachToCircle = function(c){
+	c.child.push(this)
+	this.update = function(){
+		let _x = this.x-c.center.x
+		let _y = this.y-c.center.y
+		let _length = Math.sqrt(_x*_x+_y*_y)
+		let r = c.radius()
+		this.x = c.center.x+r/_length*_x
+		this.y = c.center.y+r/_length*_y
+		d3.select(this.element)
+		  .attr("cx", this.x)
+		  .attr("cy", this.y)
+		this.child.forEach(c=>{
+			c.update()
+		})
+	}
+	this.update()
+}

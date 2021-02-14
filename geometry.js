@@ -3,7 +3,8 @@ import { GeomObj } from "./geometry-object.js"
 import { Point } from "./geometry-point.js"
 import { LineSegment } from "./geometry-linesegment.js"
 import { Bisector } from "./geometry-bisector.js"
-export { Point, LineSegment, Bisector }
+import { Circle } from "./geometry-circle.js"
+export { Point, LineSegment, Bisector, Circle }
 var geometry = {}
 export default geometry
 

@@ -31,3 +31,8 @@ class LineSegment extends GeomObj{
 			.attr("stroke", "black")
 	}
 }
+LineSegment.prototype.length = function(){
+	let a = this.v0, b = this.v1
+	let x = a.x-b.x, y = a.y-b.y
+	return Math.sqrt(x*x+y*y)
+}

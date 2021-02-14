@@ -6,7 +6,7 @@
 	<body>
 	<script type="module">
 		import geometry from "./geometry.js"
-		import {Point,LineSegment,Bisector} from "./geometry.js"
+		import {Point,LineSegment,Bisector,Circle} from "./geometry.js"
 		geometry.setField(document.getElementById("field"),500,500)
 		var A = new Point(200,50)
 		var B = new Point(100, 300)
@@ -17,11 +17,10 @@
 		new Bisector(a)
 		new Bisector(b)
 		new Bisector(c)
-
+		
+		var Y = new Circle(C, A)
 		var P = new Point(75, 75)
-		// attach P to line segment b
-		// P.attachTo(b)
-		P.attachToLS(c)
+		P.attachToCircle(Y)
 	</script>
 		<div id="field"></div>
 		<!--
