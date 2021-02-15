@@ -40,7 +40,6 @@ class Point extends GeomObj{
 						x: thePoint.x,
 						y: thePoint.y
 					}
-					console.log(thePoint.fakePosition)
 				  })
 				  .on("drag", function(e){
 					thePoint.fakePosition.x += e.dx
@@ -59,12 +58,14 @@ Point.prototype.attachToLS = function(ls){
 	this.update = function(){
 		let a = ls.v0, b = ls.v1
 		let m = b.x-a.x!==0?(b.y-a.y)/(b.x-a.x):"infinity"
-		let c = a.y-m*a.x
-		//let thisx = (this.x+m*this.y-m*c)/(1+m*m)
-		//let thisy = (m*this.x+m*m*this.y+c)/(1+m*m)
-		let thisx = (this.fakePosition.x+m*this.fakePosition.y-m*c)/(1+m*m)
-		let thisy = (m*this.fakePosition.x+m*m*this.fakePosition.y+c)/(1+m*m)
-		this.x = thisx, this.y = thisy
+		if(m!=="infinity"){
+			let c = a.y-m*a.x
+			let thisx = (this.fakePosition.x+m*this.fakePosition.y-m*c)/(1+m*m)
+			let thisy = (m*this.fakePosition.x+m*m*this.fakePosition.y+c)/(1+m*m)
+			this.x = thisx, this.y = thisy
+		}
+		else
+			this.x = ls.v0.x
 		d3.select(this.element)
 		  .attr("cx", this.x)
 		  .attr("cy", this.y)
