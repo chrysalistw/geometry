@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>2.2</title>
+	</head>
+	<body style="margin:0">
+		<script type="module">
+			import geometry from "../geometry.js"
+			import { Point, LineSegment, Bisector} from "../geometry.js"
+			
+			geometry.setField(document.getElementById("field"),500,500)
+			var A = new Point(50, 250)
+			var B = new Point(450, 250)
+			var l = new LineSegment(A, B)
+			var b = new Bisector(l)
+			var P = new Point(250, 70)//.attachToLS(b)
+			new LineSegment(A, P, true)
+			new LineSegment(B, P, true)
+		</script>
+		<div id="field"></div>
+	</body>
+</html>
