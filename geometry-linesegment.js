@@ -2,12 +2,13 @@ import { GeomObj } from "./geometry-object.js"
 export { LineSegment }
 
 class LineSegment extends GeomObj{
-	constructor(p1, p2){
+	constructor(p1, p2, dashed){
 		super()
 		this.v0 = p1
 		this.v1 = p2
 		p1.child.push(this)
 		p2.child.push(this)
+		this.dashed = dashed
 		this.child = []
 		this.show()
 	}
@@ -29,6 +30,8 @@ class LineSegment extends GeomObj{
 				  [[this.v0.x, this.v0.y], [this.v1.x, this.v1.y]]
 			  ))
 			.attr("stroke", "black")
+		if(this.dashed)
+			this.element.attr("stroke-dasharray", "2")
 	}
 }
 LineSegment.prototype.length = function(){

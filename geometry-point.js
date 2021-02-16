@@ -74,6 +74,7 @@ Point.prototype.attachToLS = function(ls){
 		})
 	}
 	this.update()
+	return this
 }
 Point.prototype.attachToCircle = function(c){
 	this.attached = true
@@ -93,4 +94,5 @@ Point.prototype.attachToCircle = function(c){
 		})
 	}
 	this.update()
+	return this
 }
