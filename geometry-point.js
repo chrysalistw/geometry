@@ -52,6 +52,9 @@ class Point extends GeomObj{
 			)
 	}
 }
+Point.prototype.invisible = function(){
+	this.element.style.visibility = "hidden"
+}
 Point.prototype.attachToLS = function(ls){
 	this.attached = true
 	ls.child.push(this)
@@ -64,8 +67,10 @@ Point.prototype.attachToLS = function(ls){
 			let thisy = (m*this.fakePosition.x+m*m*this.fakePosition.y+c)/(1+m*m)
 			this.x = thisx, this.y = thisy
 		}
-		else
+		else{
 			this.x = ls.v0.x
+			this.y = this.fakePosition.y
+		}
 		d3.select(this.element)
 		  .attr("cx", this.x)
 		  .attr("cy", this.y)

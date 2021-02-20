@@ -65,3 +65,6 @@ function y(c){
 			c.c.x, c.c.x*c.c.x+c.c.y*c.c.y
 		)/denominator(c)
 }
+Circumcenter.prototype.invisible = function(){
+	this.element.style.visibility = "hidden"
+}

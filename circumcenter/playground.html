@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>playground</title>
+	</head>
+	<body style="margin:0">
+		<script type="module">
+			import geometry from "../geometry.js"
+			import { Point, LineSegment, Bisector} from "../geometry.js"
+			import { Circumcenter } from "../geometry.js"
+			import { Circle } from "../geometry.js"
+			geometry.setField(document.getElementById("field"),400,400)
+			var A = new Point(150,50)
+			var B = new Point(50, 300)
+			var C = new Point(250, 350)
+			var a = new LineSegment(B, C)
+			var b = new LineSegment(C, A)
+			var c = new LineSegment(A, B)
+			new Bisector(a, true)
+			new Bisector(b, true)
+			new Bisector(c, true)
+			var I = new Circumcenter(A, B, C)
+			var circle = new Circle(I, A)
+		</script>
+		<div id="field"></div>
+	</body>
+</html>

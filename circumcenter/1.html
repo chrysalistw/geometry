@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>2.2</title>
+		<title>1</title>
 	</head>
 	<body style="margin:0">
 		<script type="module">
@@ -9,13 +9,10 @@
 			import { Point, LineSegment, Bisector} from "../geometry.js"
 			
 			geometry.setField(document.getElementById("field"),400,200)
-			var A = new Point(50, 150)
-			var B = new Point(350, 150)
+			var A = new Point(50, 100)
+			var B = new Point(350, 100)
 			var l = new LineSegment(A, B)
 			var b = new Bisector(l)
-			var P = new Point(250, 50).attachToLS(b)
-			new LineSegment(A, P, true)
-			new LineSegment(B, P, true)
 		</script>
 		<div id="field"></div>
 	</body>
