@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>playable triangle</title>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-P6VSM1DTN4"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		
+		gtag('config', 'G-P6VSM1DTN4');
+		</script>
+		<title>幾何教學</title>
+<style>
+html{
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 5%;
+}
+iframe{
+	border: 0;
+	margin: 20px auto;
+	display: block;
+}
+</style>
 	</head>
 	<body>
-	<script type="module">
-		import geometry from "./geometry.js"
-		import {Point,LineSegment,Bisector,Circle,Circumcenter} from "./geometry.js"
-		geometry.setField(document.getElementById("field"),500,500)
-		var A = new Point(200,50)
-		var B = new Point(100, 300)
-		var C = new Point(300, 350)
-		var b = new LineSegment(C, A)
-		var c = new LineSegment(A, B)
-		var a = new LineSegment(B, C)
-		new Bisector(a, true)
-		new Bisector(b, true)
-		new Bisector(c, true)
-		
-		//var Y = new Circle(C, A)
-		//var P = new Point(75, 75)
-		//var Q = new Point(80, 80)
-		//P.attachToLS(c)
-		//Q.attachToCircle(Y)
-		var circ = new Circumcenter(A, B, C)
-		var Y = new Circle(circ, A)
-	</script>
-		<div id="field"></div>
-		<!--
-		<script src="d3.js"></script>
-		<script src="main.js"></script>
-		-->
+		<h1>互動式幾何</h1>
+		<ul>
+			<li>
+			<a href="./circumcenter">中垂線與外心</a>
+			</li>
+		</ul>
 	</body>
 </html>
