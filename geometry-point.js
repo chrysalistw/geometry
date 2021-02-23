@@ -1,9 +1,7 @@
-import { GeomObj } from "./geometry-object.js"
-export { Point }
+//export { Point }
 
-class Point extends GeomObj{
+class Point{
 	constructor(x, y){
-		super()
 		this.x = x
 		this.y = y
 		this.fakePosition = {x: x, y: y}
@@ -22,7 +20,9 @@ class Point extends GeomObj{
 	}
 	show(){
 		let thePoint = this
-		GeomObj.field
+		//GeomObj.field
+		console.log("show point by not GeomObj which is removed")
+		d3.select(document.getElementsByTagName("svg")[0])
 			.append("circle")
 			  .attr("r", 7)
 			  .attr("cx", this.x)
@@ -101,3 +101,5 @@ Point.prototype.attachToCircle = function(c){
 	this.update()
 	return this
 }
+
+export default Point

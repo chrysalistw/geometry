@@ -1,7 +1,8 @@
-import { GeomObj } from "./geometry-object.js"
+//import { Point } from "./geometry-point.js"
+import Point from "./geometry-point.js"
 export { Circumcenter }
 
-class Circumcenter extends GeomObj{
+class Circumcenter extends Point{
 	constructor(a, b, c){
 		super()
 		this.a = a
@@ -13,6 +14,7 @@ class Circumcenter extends GeomObj{
 		c.child.push(this)
 		this.show()
 	}
+	/*
 	update(){
 		d3.select(this.element)
 		  .attr("cx", x(this))
@@ -21,9 +23,10 @@ class Circumcenter extends GeomObj{
 			c.update()
 		})
 	}
+	*/
 	show(){
 		let thePoint = this
-		GeomObj.field
+		this.field
 			.append("circle")
 			  .attr("r", 7)
 			  .attr("cx", x(this))
@@ -34,10 +37,10 @@ class Circumcenter extends GeomObj{
 				d=>{this.element=d._groups[0][0]}
 			)
 	}
-	get x(){
+	get _x(){
 		return x(this)
 	}
-	get y(){
+	get _y(){
 		return y(this)
 	}
 }
@@ -46,25 +49,22 @@ function determinant(a, b, d, e, g, h){			//|a b 1|
 }                                                       //|g h 1|
 function denominator(c){
 		return 2*determinant(
-			c.a.x, c.a.y,
-			c.b.x, c.b.y,
-			c.c.x, c.c.y
+			c.a._x, c.a._y,
+			c.b._x, c.b._y,
+			c.c._x, c.c._y
 		)
 }
 function x(c){
 		return determinant(
-			c.a.x*c.a.x+c.a.y*c.a.y, c.a.y,
-			c.b.x*c.b.x+c.b.y*c.b.y, c.b.y,
-			c.c.x*c.c.x+c.c.y*c.c.y, c.c.y
+			c.a._x*c.a._x+c.a._y*c.a._y, c.a._y,
+			c.b._x*c.b._x+c.b._y*c.b._y, c.b._y,
+			c.c._x*c.c._x+c.c._y*c.c._y, c.c._y
 		)/denominator(c)
 }
 function y(c){
 		return determinant(
-			c.a.x, c.a.x*c.a.x+c.a.y*c.a.y,
-			c.b.x, c.b.x*c.b.x+c.b.y*c.b.y,
-			c.c.x, c.c.x*c.c.x+c.c.y*c.c.y
+			c.a._x, c.a._x*c.a._x+c.a._y*c.a._y,
+			c.b._x, c.b._x*c.b._x+c.b._y*c.b._y,
+			c.c._x, c.c._x*c.c._x+c.c._y*c.c._y
 		)/denominator(c)
-}
-Circumcenter.prototype.invisible = function(){
-	this.element.style.visibility = "hidden"
 }
