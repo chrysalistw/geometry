@@ -6,7 +6,8 @@ class Point{
 		this.y = y
 		this.fakePosition = {x: x, y: y}
 		this.child = []
-		this.show()
+		if(this.constructor.name==="Point")
+			this.show()
 	}
 	update(){
 		this.x = this.fakePosition.x
@@ -54,6 +55,9 @@ class Point{
 }
 Point.prototype.invisible = function(){
 	this.element.style.visibility = "hidden"
+}
+Point.prototype.setColor = function(color){
+	this.element.style.fill = color
 }
 Point.prototype.attachToLS = function(ls){
 	this.attached = true
