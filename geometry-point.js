@@ -1,5 +1,3 @@
-//export { Point }
-
 class Point{
 	constructor(x, y){
 		this.x = x
@@ -55,9 +53,11 @@ class Point{
 }
 Point.prototype.invisible = function(){
 	this.element.style.visibility = "hidden"
+	return this
 }
 Point.prototype.setColor = function(color){
 	this.element.style.fill = color
+	return this
 }
 Point.prototype.attachToLS = function(ls){
 	this.attached = true

@@ -5,10 +5,12 @@
 	</head>
 	<body>
 		<script type="module">
+			console.log("lslslslsl")
 			import geometry from "./geometry.js"
 			//import {Point, Circumcenter} from "./geometry.js"
 			import Point from "./geometry-point.js"
-			import { Circumcenter } from "./geometry-circumcenter.js"
+			import LineSegment from "./geometry-linesegment.js"
+			import Circumcenter from "./geometry-circumcenter.js"
 
 			geometry.setField(
 				document.getElementById("field"),
@@ -17,8 +19,10 @@
 			var a = new Point(100, 150)
 			var b = new Point(250, 100)
 			var c = new Point(300, 350)
-			//c.setColor("red")
-			new Circumcenter(a, b, c)
+			new LineSegment(c, b)
+			new LineSegment(a, c)
+			new LineSegment(a, b).dash()
+			new Circumcenter(a, b, c).setColor("orange")
 console.log(geometry.field)
 console.log(a.field)// make field can be get by every single geo obj/ make it global
 		</script>

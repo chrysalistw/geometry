@@ -1,6 +1,4 @@
-//import { Point } from "./geometry-point.js"
 import Point from "./geometry-point.js"
-export { Circumcenter }
 
 class Circumcenter extends Point{
 	constructor(a, b, c){
@@ -29,7 +27,6 @@ class Circumcenter extends Point{
 	}
 	show(){
 		let thePoint = this
-		//this.field
 		d3.select(document.getElementsByTagName("svg")[0])
 			.append("circle")
 			  .attr("r", 7)
@@ -42,14 +39,6 @@ class Circumcenter extends Point{
 				d=>{this.element=d._groups[0][0]}
 			)
 	}
-	/*
-	get _x(){
-		return x(this)
-	}
-	get _y(){
-		return y(this)
-	}
-	*/
 }
 function determinant(a, b, d, e, g, h){			//|a b 1|
 	return (-a*h)+(e*a)-(b*d)+(b*g)+(d*h)-(e*g)     //|d e 1|
@@ -75,3 +64,5 @@ function y(a, b, c){
 			c.x, c.x*c.x+c.y*c.y
 		)/denominator(a, b, c)
 }
+
+export default Circumcenter
