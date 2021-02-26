@@ -1,3 +1,4 @@
+import gm from "./geometry.js"
 class Point{
 	constructor(x, y){
 		this.x = x
@@ -19,10 +20,7 @@ class Point{
 	}
 	show(){
 		let thePoint = this
-		//GeomObj.field
-		console.log("show point by not GeomObj which is removed")
-		d3.select(document.getElementsByTagName("svg")[0])
-			.append("circle")
+		gm.field.append("circle")
 			  .attr("r", 7)
 			  .attr("cx", this.x)
 			  .attr("cy", this.y)

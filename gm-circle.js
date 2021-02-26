@@ -1,12 +1,7 @@
-import { GeomObj } from "./geometry-object.js"
-export { Circle }
+import gm from "./geometry.js"
 
-class Circle extends GeomObj{
+class Circle{
 	constructor(center, P){
-		super()
-		//this.cx = cx
-		//this.cy = cy
-		//this.r = r
 		this.center = center
 		this.p = P
 		this.child = []
@@ -31,7 +26,7 @@ class Circle extends GeomObj{
 		})
 	}
 	show(){
-		GeomObj.field
+		gm.field
 			.append("circle").lower()
 			  .classed("circle", true)
 			  //.attr("r", typeof(this.r)==="function"?this.r():this.r)
@@ -45,3 +40,5 @@ class Circle extends GeomObj{
 			)
 	}
 }
+
+export default Circle

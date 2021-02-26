@@ -1,4 +1,4 @@
-import Point from "./geometry-point.js"
+import Point from "./gm-point.js"
 
 class Circumcenter extends Point{
 	constructor(a, b, c){

@@ -1,28 +1,37 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>test</title>
 	</head>
 	<body>
 		<script type="module">
-			console.log("lslslslsl")
 			import geometry from "./geometry.js"
 			//import {Point, Circumcenter} from "./geometry.js"
-			import Point from "./geometry-point.js"
-			import LineSegment from "./geometry-linesegment.js"
-			import Circumcenter from "./geometry-circumcenter.js"
+			import Point from "./gm-point.js"
+			import LineSegment from "./gm-linesegment.js"
+			import Circle from "./gm-circle.js"
+			import Circumcenter from "./gm-circumcenter.js"
+			import Intersection from "./gm-intersection.js"
+			import Angle from "./gm-angle.js"
 
 			geometry.setField(
 				document.getElementById("field"),
 				400, 400
 			)
-			var a = new Point(100, 150)
-			var b = new Point(250, 100)
-			var c = new Point(300, 350)
-			new LineSegment(c, b)
-			new LineSegment(a, c)
-			new LineSegment(a, b).dash()
-			new Circumcenter(a, b, c).setColor("orange")
+			var circle = new Circle(
+				new Point(200,200).invisible(),
+				new Point(200,10).invisible()
+			)
+			var a = new Point(100, 150).attachToCircle(circle)
+			var b = new Point(250, 100).attachToCircle(circle)
+			var c = new Point(300, 350).attachToCircle(circle)
+			var d = new Point(400, 50).attachToCircle(circle)
+			new LineSegment(a, b)
+			var m = new LineSegment(b, c)
+			new LineSegment(c, d)
+			var l = new LineSegment(d, a)
+			new Intersection(l, m).setColor("green")
+			var angle = new Angle(a, b, c)
 console.log(geometry.field)
 console.log(a.field)// make field can be get by every single geo obj/ make it global
 		</script>
